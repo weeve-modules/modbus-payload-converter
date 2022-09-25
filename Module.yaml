@@ -1,0 +1,82 @@
+displayName: "Modbus Payload Converter" # Display name for the module that will be displayed in the UI.
+moduleName: "modbus-payload-converter" # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: "This module is receiving the register response of a Modbus (or similar protocol) module and converts to a human readable format." # Module description that will be displayed in the UI.
+versionName: "v1.0.0" # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: true # Boolean value that indicates if the module is Public or Private.
+categories: # Array of category that will be used to group the module in the UI.
+    - "Converter"
+type: "Processing" # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+image:
+    name: "weevenetwork/modbus-payload-converter" # Image name from the docker registry.
+    tag: "v1.0.0" # Image tag from the docker registry.
+    homepage: "https://hub.docker.com/r/weevenetwork/modbus-payload-converter" # Image homepage from the docker registry.
+repository: "https://github.com/suprabit/weeve-modbus-payload-converter" # Repository URL to source code.
+envs: # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
+    - name: Type
+      key: TYPE
+      description: The data is split to the selected type.
+      value: "double-word"
+      type: "select"
+      options:
+          - bit
+          - byte
+          - word
+          - double-word
+      dependencies: []
+    - name: Offset
+      key: OFFSET
+      description: The offset on which the conversion will be applied.
+      value: 0
+      type: "number"
+      options: []
+      dependencies: []
+    - name: Format
+      key: FORMAT
+      description: The format of the coverted data.
+      value: "hex-string"
+      type: "select"
+      options:
+          - hex-string
+          - integer
+          - float-ieee754
+          - string
+      dependencies: []
+    - name: Swap
+      key: SWAP
+      description: The swap order of bytes to apply.
+      value: "abcd"
+      type: "select"
+      options:
+          - abcd
+          - badc
+          - cdab
+          - dcba
+      dependencies: []
+    - name: Input Label
+      key: INPUT_LABEL
+      description: The field with data to convert.
+      value: "data"
+      type: "text"
+      options: []
+      dependencies: []
+    - name: Output Label
+      key: OUTPUT_LABEL
+      description: The out label as which data is dispatched.
+      value: "output_data"
+      type: "text"
+      options: []
+      dependencies: []
+envPorts: []
+envMounts: []
+devices: []
+envDevices: []
+ports: # Array of ports that will be exposed by the module.
+    - container: 8080 # Port number from the container.
+      host: 8080 # Port number to map on the host.
+mounts:
+    - container: "/data" # Mount path from the container.
+      host: "/data" # Mount path to map on the host.
+tags: # Array of tags.
+    - "Python"
+    - "Processing"
+icon: "https://i.ibb.co/8N4f68K/mi-modbus-payload-converter-process.png" # Icon URL that will be displayed in the UI.
