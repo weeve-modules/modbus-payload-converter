@@ -26,7 +26,7 @@ envs: # Array of environment variables that will be used to configure the module
     - name: Offset
       key: OFFSET
       description: The offset on which the conversion will be applied.
-      value: 0
+      value: "0"
       type: "number"
       options: []
       dependencies: []
